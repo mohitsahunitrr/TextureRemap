@@ -105,22 +105,22 @@ class Application {
         //     this.meshTo.material = new THREE.MeshBasicMaterial({map: this.texFrom, side: THREE.DoubleSide});
         // });
 
-        // this.addParam('switchOrtho', () => {
-        //     this.sceneManager.scene.remove(this.sceneManager.camera);
-        //     var cameraBefore = this.sceneManager.camera;
-        //     if (this.sceneManager.camera == this.sceneManager.cameraPersp) {
-        //         this.sceneManager.camera = this.sceneManager.cameraOrtho;
-        //         this.sceneManager.camera.position.set(0, 0, cameraBefore.position.z);
-        //         this.sceneManager.controls = new THREE.OrbitControls(this.sceneManager.camera, this.sceneManager.renderer.domElement);
-        //         this.sceneManager.controls.enableRotate = false;
-        //
-        //     } else {
-        //         this.sceneManager.camera = this.sceneManager.cameraPersp;
-        //         this.sceneManager.camera.position.z = cameraBefore.position.z;
-        //         this.sceneManager.controls = new THREE.OrbitControls(this.sceneManager.camera, this.sceneManager.renderer.domElement);
-        //     }
-        //     this.sceneManager.scene.add(this.sceneManager.camera);
-        // });
+        this.addParam('switchOrtho', () => {
+            this.sceneManager.scene.remove(this.sceneManager.camera);
+            var cameraBefore = this.sceneManager.camera;
+            if (this.sceneManager.camera == this.sceneManager.cameraPersp) {
+                this.sceneManager.camera = this.sceneManager.cameraOrtho;
+                this.sceneManager.camera.position.set(0, 0, cameraBefore.position.z);
+                this.sceneManager.controls = new THREE.OrbitControls(this.sceneManager.camera, this.sceneManager.renderer.domElement);
+                this.sceneManager.controls.enableRotate = false;
+
+            } else {
+                this.sceneManager.camera = this.sceneManager.cameraPersp;
+                this.sceneManager.camera.position.z = cameraBefore.position.z;
+                this.sceneManager.controls = new THREE.OrbitControls(this.sceneManager.camera, this.sceneManager.renderer.domElement);
+            }
+            this.sceneManager.scene.add(this.sceneManager.camera);
+        });
 
         this.addParam('xSizeOnSave', 1000).min(10).max(4096);
         this.addParam('saveImageTo', () => {
